@@ -11,21 +11,6 @@ import javax.transaction.Transactional;
 @SpringBootTest
 public class MemberRepositoryTest {
 
-    @Autowired
-    MemberRepository memberRepository;
 
-    @Test
-    @Transactional
-    @Rollback(false)
-    void memberSaveTest() throws Exception{
-        Member member = new Member();
-        member.setUsername("memberA");
-
-        Long savedId = memberRepository.save(member);
-        Member findMember = memberRepository.find(savedId);
-
-        Assertions.assertEquals(findMember.getId(),member.getId());
-        Assertions.assertEquals(findMember.getUsername(),member.getUsername());
-    }
 
 }
