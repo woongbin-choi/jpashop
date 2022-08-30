@@ -104,6 +104,6 @@ class OrderServiceTest {
         orderService.order(member.getId(), item.getId(), orderCount);
 
         // then
-        fail("재고 수량 부족 예외가 발생한다");
+        fail("재고 수량 부족 예외가 발생한다.");
     }
 }
