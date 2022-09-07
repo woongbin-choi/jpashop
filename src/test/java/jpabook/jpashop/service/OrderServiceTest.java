@@ -106,4 +106,9 @@ class OrderServiceTest {
         // then
         fail("재고 수량 부족 예외가 발생한다.");
     }
+
+//    @Test
+//    public void lazyTest() throws Exception {
+//        Order findOrder = em.createQuery("select o from Order o", Order.class).getSingleResult();
+//    }
 }
