@@ -18,12 +18,6 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    // 생성자 인잭션 (유용하게 커스터마이징 할 수 있다)
-//    @Autowired
-//    public MemberService(MemberRepository memberRepository) {
-//        this.memberRepository = memberRepository;
-//    }
-
     // 회원 가입
     @Transactional
     public Long join(Member member) {
