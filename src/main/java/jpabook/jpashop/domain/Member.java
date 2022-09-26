@@ -1,5 +1,6 @@
 package jpabook.jpashop.domain;
 
+import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +18,7 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
+    @NotNull
     private String name;
 
     @Embedded
