@@ -5,6 +5,7 @@ import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderSearch;
 import jpabook.jpashop.domain.OrderStatus;
 import jpabook.jpashop.repository.OrderRepository;
+import jpabook.jpashop.repository.SimpleOrderQueryDto;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,14 +56,21 @@ public class OrderSimpleApiController {
 
     // v1, v2 둘다 쿼리문을 너무 많이 보내는 문제점이 있음.
 
+    // 쿼리를 한번만 보내서 원하는 데이터를 다 가져옴
     @GetMapping("/api/v3/simple-orders")
-    public List<SimpleOrderDto> ordersV23() {
+    public List<SimpleOrderDto> ordersV3() {
         List<Order> orders = orderRepository.findAllWithMemberDelivery();
         List<SimpleOrderDto> result = orders.stream()
                 .map(o -> new SimpleOrderDto(o))
                 .collect(Collectors.toList());
 
         return result;
+    }
+
+    // 쿼리가 줄긴 하지만 재사용성이 힘듬
+    @GetMapping("/api/v4/simple-orders")
+    public List<SimpleOrderQueryDto> ordersV4() {
+        return orderRepository.findOrderDtos();
     }
 
     @Data
