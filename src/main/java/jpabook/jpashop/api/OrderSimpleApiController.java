@@ -55,6 +55,16 @@ public class OrderSimpleApiController {
 
     // v1, v2 둘다 쿼리문을 너무 많이 보내는 문제점이 있음.
 
+    @GetMapping("/api/v3/simple-orders")
+    public List<SimpleOrderDto> ordersV23() {
+        List<Order> orders = orderRepository.findAllWithMemberDelivery();
+        List<SimpleOrderDto> result = orders.stream()
+                .map(o -> new SimpleOrderDto(o))
+                .collect(Collectors.toList());
+
+        return result;
+    }
+
     @Data
     static class SimpleOrderDto {
         private Long orderId;
