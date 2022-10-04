@@ -18,7 +18,6 @@ public class OrderQueryRepository {
             List<OrderItemQueryDto> orderItems = findOrderItems(o.getOrderId());
             o.setOrderItems(orderItems);
         });
-
         return result;
     }
 
